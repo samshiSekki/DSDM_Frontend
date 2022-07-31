@@ -6,7 +6,7 @@ const Main = () => {
     return(
         <div>
             안녕하세요ㅇㅁㄹssddddssdddddd
-            ddddddddddssssssd
+            ddddddddddssssssdddssddddddss
             {/* <MainRecommend/>
             <MainLists/> */}
         </div>
