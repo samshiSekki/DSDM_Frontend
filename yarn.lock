@@ -4745,7 +4745,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"confusing-browser-globals@npm:^1.0.10, confusing-browser-globals@npm:^1.0.11":
+"confusing-browser-globals@npm:^1.0.11":
   version: 1.0.11
   resolution: "confusing-browser-globals@npm:1.0.11"
   checksum: 3afc635abd37e566477f610e7978b15753f0e84025c25d49236f1f14d480117185516bdd40d2a2167e6bed8048641a9854964b9c067e3dcdfa6b5d0ad3c3a5ef
@@ -5829,32 +5829,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-react-app@npm:6":
-  version: 6.0.0
-  resolution: "eslint-config-react-app@npm:6.0.0"
-  dependencies:
-    confusing-browser-globals: ^1.0.10
-  peerDependencies:
-    "@typescript-eslint/eslint-plugin": ^4.0.0
-    "@typescript-eslint/parser": ^4.0.0
-    babel-eslint: ^10.0.0
-    eslint: ^7.5.0
-    eslint-plugin-flowtype: ^5.2.0
-    eslint-plugin-import: ^2.22.0
-    eslint-plugin-jest: ^24.0.0
-    eslint-plugin-jsx-a11y: ^6.3.1
-    eslint-plugin-react: ^7.20.3
-    eslint-plugin-react-hooks: ^4.0.8
-    eslint-plugin-testing-library: ^3.9.0
-  peerDependenciesMeta:
-    eslint-plugin-jest:
-      optional: true
-    eslint-plugin-testing-library:
-      optional: true
-  checksum: b265852455b1c10e9c5f0cebe199306fffc7f8e1b6548fcb0bccdc4415c288dfee8ab10717122a32275b91130dfb482dcbbc87d2fb79d8728d4c2bfa889f0915
-  languageName: node
-  linkType: hard
-
 "eslint-config-react-app@npm:^7.0.1":
   version: 7.0.1
   resolution: "eslint-config-react-app@npm:7.0.1"
@@ -5913,7 +5887,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-import@npm:^2.25.3":
+"eslint-plugin-import@npm:^2.25.3, eslint-plugin-import@npm:^2.26.0":
   version: 2.26.0
   resolution: "eslint-plugin-import@npm:2.26.0"
   dependencies:
@@ -11378,7 +11352,8 @@ __metadata:
     "@typescript-eslint/parser": ^5.31.0
     "@yarnpkg/sdks": ^3.0.0-rc.14
     eslint: ^8.20.0
-    eslint-config-react-app: 6
+    eslint-config-react-app: ^7.0.1
+    eslint-plugin-import: ^2.26.0
     eslint-plugin-jest: ^26.7.0
     react: ^18.2.0
     react-dom: ^18.2.0

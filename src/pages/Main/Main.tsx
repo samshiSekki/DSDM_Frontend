@@ -5,8 +5,8 @@ import MainRecommend from '../../components/Main/MainRecommend';
 const Main = () => {
     return(
         <div>
-            안녕하세요ㅇㅁㄹ
-            dddddd
+            안녕하세요ㅇㅁㄹssddddssdddddd
+            ddddddddddssssssd
             {/* <MainRecommend/>
             <MainLists/> */}
         </div>
