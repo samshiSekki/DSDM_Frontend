@@ -3172,7 +3172,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:5.31.0, @typescript-eslint/utils@npm:^5.13.0":
+"@typescript-eslint/utils@npm:5.31.0, @typescript-eslint/utils@npm:^5.10.0, @typescript-eslint/utils@npm:^5.13.0":
   version: 5.31.0
   resolution: "@typescript-eslint/utils@npm:5.31.0"
   dependencies:
@@ -5950,6 +5950,23 @@ __metadata:
     jest:
       optional: true
   checksum: fc6da96131f4cbf33d15ef911ec8e600ccd71deb97d73c0ca340427cef7b01ff41a797e2e7d1e351abf97321a46ed0c0acff5ee8eeedac94961dd6dad1f718a9
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-jest@npm:^26.7.0":
+  version: 26.7.0
+  resolution: "eslint-plugin-jest@npm:26.7.0"
+  dependencies:
+    "@typescript-eslint/utils": ^5.10.0
+  peerDependencies:
+    "@typescript-eslint/eslint-plugin": ^5.0.0
+    eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+  peerDependenciesMeta:
+    "@typescript-eslint/eslint-plugin":
+      optional: true
+    jest:
+      optional: true
+  checksum: 21dbeb3820a1640185e0bd3847f65feba98b479812bcaa3f353e725bd0538618b16544b4dfc74ac147b5150afed9cf28760d7aaad54158611403810776fe6353
   languageName: node
   linkType: hard
 
@@ -11359,6 +11376,7 @@ __metadata:
     "@types/react-dom": latest
     "@yarnpkg/sdks": ^3.0.0-rc.14
     eslint-config-react-app: 6
+    eslint-plugin-jest: ^26.7.0
     react: ^18.2.0
     react-dom: ^18.2.0
     react-router-dom: ^6.3.0
