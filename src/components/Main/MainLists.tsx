@@ -3,7 +3,7 @@ import React from 'react';
 function MainLists() {
     return(
         <div>
-            hi
+            hidddd
         </div>
     )
 

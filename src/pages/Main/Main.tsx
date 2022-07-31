@@ -5,12 +5,13 @@ import MainRecommend from '../../components/Main/MainRecommend';
 const Main = () => {
     return(
         <div>
-            <MainRecommend/>
-            <MainLists/>
+            안녕하세요ㅇㅁㄹ
+            dddddd
+            {/* <MainRecommend/>
+            <MainLists/> */}
         </div>
 
     )
-
 }
 
 export default Main;
