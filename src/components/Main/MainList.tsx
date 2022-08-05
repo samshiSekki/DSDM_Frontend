@@ -16,6 +16,7 @@ function MainList (club: ClubDatasetsType) {
     const { clubName, field, recruitment, period, week, amount, process, activation } = club;
 
     function onClickSubListPage (){
+        alert('hi')
 
 
     }
@@ -33,6 +34,8 @@ function MainList (club: ClubDatasetsType) {
             color: #241E19;
 
             border-bottom: 1.5px solid #DBDBDB;
+
+            cursor: pointer;
         `}
             onClick={onClickSubListPage}
         >
