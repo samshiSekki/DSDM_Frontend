@@ -37,7 +37,7 @@ const ClubDatasets : ClubDatasetsType[] = [
         activation: '온/오프라인'
     },
     {
-        clubName: '한국대학생IT경영학회 KUSITMS',
+        clubName: '한국대학영학회 KUSITMS',
         field: '기획, 개발, 디자인',
         recruitment: '모집중',
         period: '3개월',

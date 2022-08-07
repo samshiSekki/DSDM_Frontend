@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "NanumSquareR";
+    font-weight: 50;
+    src: url("./fonts/NanumSquareR.ttf") format("truetype");
+  }
+
+  .body {
+    font-family: NanumSquareR;
+  }

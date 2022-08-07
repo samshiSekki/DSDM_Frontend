@@ -10,7 +10,6 @@ const headerStyle = css`
 
     padding-top: 95px;
     position: fixed;
-    left: calc(100vw - 83%);
 `
 
 const Header = () => {

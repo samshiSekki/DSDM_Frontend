@@ -16,15 +16,14 @@ function MainList (club: ClubDatasetsType) {
     const { clubName, field, recruitment, period, week, amount, process, activation } = club;
 
     function onClickSubListPage (){
+        // 상세 페이지 이동
         alert('hi')
-
-
     }
 
     return (
         <div css={css`
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
 
             height: 105px;
@@ -39,14 +38,9 @@ function MainList (club: ClubDatasetsType) {
         `}
             onClick={onClickSubListPage}
         >
-            {clubName}
-            {field}
-            {recruitment}
-            {period}
-            {week}
-            {amount}
-            {process}
-            {activation}
+            {Object.entries(club).map(([key, value]) => {
+                return <div>{value}</div>
+            })}
         </div>
     )
 }
