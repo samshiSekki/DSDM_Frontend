@@ -1,19 +1,23 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react"
+import { useState } from "react"
 
 type ClubDatasetsType = {
-    clubName: string
+    name: string
+    clubId: number
     field: string
-    recruitment: string
+    recruiting: string
     period: string
-    week: string
-    amount: number
-    process: string
-    activation: string
+    activityDay: string
+    membershipFee: string
+    selectionProcess: string
+    online: string
+    subCategory: any
 }
 
 function MainList (club: ClubDatasetsType) {
-    const { clubName, field, recruitment, period, week, amount, process, activation } = club;
+    // const { name, field, recruitment, period, week, amount, process, activation } = club;
+    // const [club, setClub] = useState(club);
 
     function onClickSubListPage (){
         // 상세 페이지 이동
@@ -39,8 +43,16 @@ function MainList (club: ClubDatasetsType) {
             onClick={onClickSubListPage}
         >
             {Object.entries(club).map(([key, value]) => {
-                return <div>{value}</div>
-            })}
+                if (key === 'name') {
+                    return <div css={css`width: 410px;`}>{value}</div>}
+                if (key === 'subCategory') {
+                    return;
+                }
+                if (key === 'clubId') {
+                    return;
+                }
+                return <div>{value}</div>}
+            )}
         </div>
     )
 }
