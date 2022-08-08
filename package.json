@@ -10,6 +10,8 @@
     "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
     "eslint-config-react-app": "6",
     "eslint-plugin-import": "^2.26.0",
     "react": "^18.2.0",
