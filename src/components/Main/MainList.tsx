@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 type ClubDatasetsType = {
     name: string
@@ -18,10 +19,11 @@ type ClubDatasetsType = {
 function MainList (club: ClubDatasetsType) {
     // const { name, field, recruitment, period, week, amount, process, activation } = club;
     // const [club, setClub] = useState(club);
+    const navigate = useNavigate();
 
-    function onClickSubListPage (){
+    function onClickSubListPage (id: number){
         // 상세 페이지 이동
-        alert('hi')
+        navigate(`/detail/${id}`);
     }
 
     return (
@@ -40,7 +42,7 @@ function MainList (club: ClubDatasetsType) {
 
             cursor: pointer;
         `}
-            onClick={onClickSubListPage}
+            onClick={() => onClickSubListPage(club.clubId)}
         >
             {Object.entries(club).map(([key, value]) => {
                 if (key === 'name') {

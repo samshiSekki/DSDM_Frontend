@@ -5597,6 +5597,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:^16.0.1":
+  version: 16.0.1
+  resolution: "dotenv@npm:16.0.1"
+  checksum: f459ffce07b977b7f15d8cc4ee69cdff77d4dd8c5dc8c85d2d485ee84655352c2415f9dd09d42b5b5985ced3be186130871b34e2f3e2569ebc72fbc2e8096792
+  languageName: node
+  linkType: hard
+
 "duplexer@npm:^0.1.2":
   version: 0.1.2
   resolution: "duplexer@npm:0.1.2"
@@ -11419,6 +11426,10 @@ __metadata:
     "@typescript-eslint/parser": ^5.31.0
     "@yarnpkg/sdks": ^3.0.0-rc.14
     axios: ^0.27.2
+<<<<<<< HEAD
+=======
+    dotenv: ^16.0.1
+>>>>>>> 49a69ed7789452b0ba30061cf36ae3452345ed58
     eslint: ^8.20.0
     eslint-config-react-app: 6
     eslint-plugin-import: ^2.26.0

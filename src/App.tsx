@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Main from './pages/Main/Main';
 import './App.css';
 import { css } from '@emotion/react';
+import Detail from './pages/Detail/Detail';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/detail/:id" element={<Detail/>} />
       </Routes>
     </div>
 
