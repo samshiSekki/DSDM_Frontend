@@ -52,13 +52,11 @@ const Detail = () => {
   const fetchData = async() => {
     try{
       const response = await axios.get(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_GET_DETAIL}${id}`);
-      console.log(response.data);
       setClubInfo(response.data);
     } catch(e){
       console.log(e);
     }
     
-    console.log(clubInfo)
   }
 
   useEffect(() => {
@@ -157,11 +155,11 @@ const Detail = () => {
             <div css={detailDescription}>
               <div style={{display: 'flex', marginBottom: '19px'}}>
                 <img src={siteIcon} style={{width: '19px', height: '19px', marginRight: '16px'}}/>
-                <a href={clubInfo.club.snsAddress} style={{color: '#241E19'}}>{clubInfo.club.snsAddress}</a>
+                <a href={clubInfo.club.siteAddress} style={{color: '#241E19'}}>{clubInfo.club.siteAddress}</a>
               </div>
               <div style={{display: 'flex'}}>
                 <img src={snsIcon} style={{width: '19px', height: '19px', marginRight: '16px'}}/>
-                <a href={clubInfo.club.siteAddress} style={{color: '#241E19'}}>{clubInfo.club.siteAddress}</a>
+                <a href={clubInfo.club.snsAddress} style={{color: '#241E19'}}>{clubInfo.club.snsAddress}</a>
               </div>
             </div>
 
