@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, {useState, useEffect} from 'react'
-import dotenv from "dotenv"
+import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { css } from '@emotion/react';
 import axios from 'axios';

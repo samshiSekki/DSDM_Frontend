@@ -1,29 +1,35 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 type ClubDatasetsType = {
-    clubName: string
+    name: string
+    clubId: number
     field: string
-    recruitment: string
+    recruiting: string
     period: string
-    week: string
-    amount: number
-    process: string
-    activation: string
+    activityDay: string
+    membershipFee: string
+    selectionProcess: string
+    online: string
+    subCategory: any
 }
 
 function MainList (club: ClubDatasetsType) {
-    const { clubName, field, recruitment, period, week, amount, process, activation } = club;
+    // const { name, field, recruitment, period, week, amount, process, activation } = club;
+    // const [club, setClub] = useState(club);
+    const navigate = useNavigate();
 
-    function onClickSubListPage (){
-
-
+    function onClickSubListPage (id: number){
+        // 상세 페이지 이동
+        navigate(`/detail/${id}`);
     }
 
     return (
         <div css={css`
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
 
             height: 105px;
@@ -33,17 +39,22 @@ function MainList (club: ClubDatasetsType) {
             color: #241E19;
 
             border-bottom: 1.5px solid #DBDBDB;
+
+            cursor: pointer;
         `}
-            onClick={onClickSubListPage}
+            onClick={() => onClickSubListPage(club.clubId)}
         >
-            {clubName}
-            {field}
-            {recruitment}
-            {period}
-            {week}
-            {amount}
-            {process}
-            {activation}
+            {Object.entries(club).map(([key, value]) => {
+                if (key === 'name') {
+                    return <div css={css`width: 410px;`}>{value}</div>}
+                if (key === 'subCategory') {
+                    return;
+                }
+                if (key === 'clubId') {
+                    return;
+                }
+                return <div>{value}</div>}
+            )}
         </div>
     )
 }
