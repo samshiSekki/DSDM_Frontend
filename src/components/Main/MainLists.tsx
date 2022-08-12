@@ -74,7 +74,6 @@ function MainLists() {
     return(
         <div css={css`
             width: 1700px;
-            margin: 110px 0px;
             height: 580px;
             background: #F8F8F8;
             border-radius: 30px;

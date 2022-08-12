@@ -10933,7 +10933,6 @@ __metadata:
     case-sensitive-paths-webpack-plugin: ^2.4.0
     css-loader: ^6.5.1
     css-minimizer-webpack-plugin: ^3.2.0
-    dotenv: ^10.0.0
     dotenv-expand: ^5.1.0
     eslint: ^8.3.0
     eslint-config-react-app: ^7.0.1
@@ -11426,10 +11425,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.31.0
     "@yarnpkg/sdks": ^3.0.0-rc.14
     axios: ^0.27.2
-<<<<<<< HEAD
-=======
     dotenv: ^16.0.1
->>>>>>> 49a69ed7789452b0ba30061cf36ae3452345ed58
     eslint: ^8.20.0
     eslint-config-react-app: 6
     eslint-plugin-import: ^2.26.0

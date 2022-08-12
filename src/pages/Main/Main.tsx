@@ -18,6 +18,16 @@ const Main = () => {
         `}>
             {/* <MainRecommend/> */}
             <MainFilter/>
+            <p css={css`
+                font-size: 16px;
+                line-height: 18px;
+                margin-left: -1900px;
+            `}>IT</p>
+            <div css={css`
+                border-bottom: 1.5px solid #241E19;
+                width: 1900px;
+                height: 0px;
+            `}/>
             <MainLists/>
 
         </div>
