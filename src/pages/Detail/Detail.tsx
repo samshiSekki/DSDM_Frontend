@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React, {useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { css } from '@emotion/react';
 import axios from 'axios';
 import snsIcon from '../../assets/detail/sns_icon.png'
@@ -40,9 +40,9 @@ const Detail = () => {
      },
      recommendClub: [
       {
+        clubId: "",
         logoUrl: "",
-        name: "",
-        _id: "",
+        name: ""
       }
      ]
       
@@ -52,6 +52,7 @@ const Detail = () => {
   const fetchData = async() => {
     try{
       const response = await axios.get(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_GET_DETAIL}${id}`);
+      console.log(response.data)
       setClubInfo(response.data);
     } catch(e){
       console.log(e);
@@ -185,6 +186,7 @@ const Detail = () => {
               {
                 clubInfo.recommendClub.map((a) => {
                   return(
+                    <a href={`/detail/${a.clubId}`} css={css`text-decoration: none`}>
                     <div style={{textAlign: 'center', marginRight: '33px'}}>
                       <div css={recommendImgContainer}>
                         <img src={a.logoUrl} style={{width: '132px', height: '132px', borderRadius: '70%'}}/>
@@ -193,6 +195,7 @@ const Detail = () => {
                         {a.name}
                       </div>
                     </div>
+                    </a>
                   )
                 })
               }
