@@ -67,18 +67,18 @@ const Detail = () => {
   if (!clubInfo) return null;
 
   return (
-    <div style={{overflow: 'hidden'}}>
-      <div style={{paddingTop: '247px', fontFamily: 'NanumSquare'}}>
+    <div css={css`overflow: hidden;`}>
+      <div css={css`padding-top: 247px; font-family: NanumSquare;`}>
         <div css={summaryContainer}>
           <div css={title}>
             <div css={imageDiv}>
-                <img src={clubInfo.club.logoUrl} style={{width: '61px', height: '61px', borderRadius: '70%'}}/>
+                <img src={clubInfo.club.logoUrl} css={css`width: 61px; height: 61px; borderRadius: 70%;`}/>
             </div>
             <div css={nameDiv}>
               {clubInfo.club.name}
             </div>
           </div>
-          <table css={summaryTable} style={{overflow: 'hidden'}}>
+          <table css={summaryTable}>
               <tbody>
                 <tr>
                   <td css={categoryTD}>분야</td><td css={dataTD}>{clubInfo.club.mainCategory}</td>
@@ -105,8 +105,8 @@ const Detail = () => {
                   <td css={categoryTD}>선발 절차</td><td css={dataTD}>{clubInfo.club.selectionProcess}</td>
                 </tr>
                 <tr>
-                  <td style={{borderRight: '1.5px solid #DBDBDB', textAlign:'center', background: '#F8F8F8'}}>활동 방법</td>
-                  <td style={{textAlign: 'center'}}>
+                  <td css={css`border-right: 1.5px solid #DBDBDB; text-align: center; background: #F8F8F8;`}>활동 방법</td>
+                  <td css={css`text-align: center`}>
                     {
                       clubInfo.club.online == 1
                       ? <div>온라인</div>
@@ -135,7 +135,7 @@ const Detail = () => {
               {
                 clubInfo.club.uniqueness.map((a) => {
                   return(
-                    <div style={{marginBottom: '10px'}}>
+                    <div css={{marginBottom: '10px'}}>
                       - {a}
                     </div>
                   )
@@ -154,13 +154,13 @@ const Detail = () => {
               {clubInfo.club.name}에 대해 더 알고 싶다면 ?
             </span>
             <div css={detailDescription}>
-              <div style={{display: 'flex', marginBottom: '19px'}}>
-                <img src={siteIcon} style={{width: '19px', height: '19px', marginRight: '16px'}}/>
-                <a href={clubInfo.club.siteAddress} style={{color: '#241E19'}}>{clubInfo.club.siteAddress}</a>
+              <div css={css`display: flex; margin-bottom: 19px;`}>
+                <img src={siteIcon} css={css`width: 19px; height: 19px; margin-right: 16px;`}/>
+                <a href={clubInfo.club.siteAddress} css={css`color: #241E19;`}>{clubInfo.club.siteAddress}</a>
               </div>
-              <div style={{display: 'flex'}}>
-                <img src={snsIcon} style={{width: '19px', height: '19px', marginRight: '16px'}}/>
-                <a href={clubInfo.club.snsAddress} style={{color: '#241E19'}}>{clubInfo.club.snsAddress}</a>
+              <div css={css`display: flex;`}>
+                <img src={snsIcon} css={css`width: 19px; height: 19px; margin-right: 16px;`}/>
+                <a href={clubInfo.club.snsAddress} css={css`color: #241E19;`}>{clubInfo.club.snsAddress}</a>
               </div>
             </div>
 
@@ -171,8 +171,8 @@ const Detail = () => {
               {
                 clubInfo.club.reviews.map((a) => {
                   return(
-                    <div style={{marginBottom: '10px'}}>
-                      <a href={a} style={{color: '#241E19'}}>{a}</a>
+                    <div css={css`marginottom: 10px`}>
+                      <a href={a} css={css`color: #241E19;`}>{a}</a>
                     </div>
                   )
                 })
@@ -187,9 +187,9 @@ const Detail = () => {
                 clubInfo.recommendClub.map((a) => {
                   return(
                     <a href={`/detail/${a.clubId}`} css={css`text-decoration: none`}>
-                    <div style={{textAlign: 'center', marginRight: '33px'}}>
+                    <div css={css`text-align: center; margin-right: 33px;`}>
                       <div css={recommendImgContainer}>
-                        <img src={a.logoUrl} style={{width: '132px', height: '132px', borderRadius: '70%'}}/>
+                        <img src={a.logoUrl} css={css`width: 132px; height: 132px; borderRadius: 70%;`}/>
                       </div>
                       <div css={recommendTitle}>
                         {a.name}
@@ -243,6 +243,7 @@ const nameDiv = css`
 `;
 
 const summaryTable = css`
+  overflow: hidden;
   width: 24vw;
   margin-top: 24px;
   font-style: normal;
