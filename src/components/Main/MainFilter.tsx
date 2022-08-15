@@ -15,7 +15,7 @@ const MainFilter = () => {
             align-self: flex-start;
             gap: 16px;
             margin-left: 300px;
-            margin-top: 200px;
+            margin-top: 53px;
         `}>
             <span css={css`
                 font-size: 22px;

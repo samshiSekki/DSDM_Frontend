@@ -5,6 +5,7 @@ import React from 'react';
 import MainFilter from '../../components/Main/MainFilter';
 import MainLists from '../../components/Main/MainLists';
 import MainRecommend from '../../components/Main/MainRecommend';
+import MainTodayList from '../../components/Main/MainTodayList';
 
 const Main = () => {
     return(
@@ -17,6 +18,7 @@ const Main = () => {
             justify-content: center;
         `}>
             {/* <MainRecommend/> */}
+            <MainTodayList/>
             <MainFilter/>
             <p css={css`
                 font-size: 16px;
