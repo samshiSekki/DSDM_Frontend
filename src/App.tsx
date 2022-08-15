@@ -16,7 +16,7 @@ function App() {
         flex-direction: column;
         align-items: center;
       `}>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/detail/:id" element={<Detail/>} />
