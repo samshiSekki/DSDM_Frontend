@@ -5,6 +5,8 @@ import { jsx, css } from '@emotion/react';
 import MainList from './MainList';
 import axios from 'axios';
 
+type ClubType = Record<string, any>
+
 type ClubDatasetsType = {
     name: string
     clubId: number
@@ -52,15 +54,14 @@ type ClubDatasetsType = {
 // ]
 
 function MainLists() {
-    const [clubs, setClubs] = useState([]);
+    const [clubs, setClubs] = useState<ClubType>({});
 
     const getClubLists = async () => {
         // async await 함수를 사용할 때, 
 
         try {
             const data = await axios.get('http://43.200.156.125:5000/clubs');
-            setClubs(data.data['IT']);
-            console.log(data.data['IT']);
+            setClubs(data.data);
         } catch {
             // 오류 발생시 실행
         }
@@ -74,15 +75,45 @@ function MainLists() {
     return(
         <div css={css`
             width: 1700px;
-            height: 580px;
+            height: inherit;
             background: #F8F8F8;
             border-radius: 30px;
+            position: relative;
 
             padding: 0px 130px;
+
+            margin-top: 24px;
         `}>
-            {clubs.map((club: ClubDatasetsType, index: number) => {
-                return <MainList key={index} {...club}/>
-            })}
+            {Object.keys(clubs).map((key: string, index: number) => {
+                return (
+                    <>
+                        <div css={css`
+                            margin-left: -100px;
+                            margin-top: -51px;
+                        `}>
+                            <p css={css`
+                                font-size: 16px;
+                                line-height: 18px;
+                            `}>{key}
+                            </p>
+                            <div css={css`
+                                border-bottom: 1.5px solid #241E19;
+                                width: 1900px;
+                                height: 0px;
+                            `}/>
+                        </div>
+                        {clubs[key].map((club: ClubDatasetsType, index: number) => {
+                            return <MainList key={index} {...club}/>
+                        })}
+                    </>
+                )}
+            )}
+             <div css={css`
+                border-bottom: 1.5px solid #241E19;
+                width: 1900px;
+                height: 0px;
+                margin-left: -100px;
+                `}/>
         </div>
     )
 

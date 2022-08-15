@@ -1,20 +1,24 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from '@emotion/react';
-import React from 'react';
+import React, { useState } from 'react';
+import MainFilterModal from './MainFilterModal';
 
 const FILTER_TEXT = '이런 것만 보고싶어요!'
 const Filter_INSIDE_TEXT = 'filter'
 
 const MainFilter = () => {
+    const [modalVisible, setModalVisible] = useState<boolean>(false);
+    
     return (
+        <>
+        {modalVisible && <MainFilterModal modalVisible={modalVisible} setModalVisible={setModalVisible}/>}
         <div css={css`
             display: flex;
             justify-content: center;
             align-items: center;
             align-self: flex-start;
             gap: 16px;
-            margin-left: 300px;
             margin-top: 200px;
         `}>
             <span css={css`
@@ -35,10 +39,13 @@ const MainFilter = () => {
                 width: fit-content;
                 border-radius: 10px;
                 padding: 4px 8px;
-            `}>
+                cursor: pointer;
+            `}
+                onClick={() => setModalVisible(true)}>
                 {Filter_INSIDE_TEXT}
             </div>
         </div>
+        </>
     )
 }
 

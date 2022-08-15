@@ -6,18 +6,17 @@ import { useNavigate } from "react-router-dom"
 type ClubDatasetsType = {
     name: string
     clubId: number
-    field: string
     recruiting: string
     period: string
     activityDay: string
     membershipFee: string
     selectionProcess: string
     online: string
-    subCategory: any
+    subCategory: any 
 }
 
 function MainList (club: ClubDatasetsType) {
-    // const { name, field, recruitment, period, week, amount, process, activation } = club;
+    const { name, subCategory, recruiting, period, activityDay, membershipFee, selectionProcess, online } = club;
     // const [club, setClub] = useState(club);
     const navigate = useNavigate();
 
@@ -29,7 +28,6 @@ function MainList (club: ClubDatasetsType) {
     return (
         <div css={css`
             display: flex;
-            justify-content: space-between;
             align-items: center;
 
             height: 105px;
@@ -44,17 +42,45 @@ function MainList (club: ClubDatasetsType) {
         `}
             onClick={() => onClickSubListPage(club.clubId)}
         >
-            {Object.entries(club).map(([key, value]) => {
-                if (key === 'name') {
-                    return <div css={css`width: 410px;`}>{value}</div>}
-                if (key === 'subCategory') {
-                    return;
-                }
-                if (key === 'clubId') {
-                    return;
-                }
-                return <div>{value}</div>}
-            )}
+            <div css={css`
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 27px;
+                width: 400px;
+            `}>{name}
+            </div>
+            <div css={css`width: 300px; padding: 0px 30px;`}>
+                <div>
+                    {subCategory.map((category: any, index: number) => {
+                    if (Object.keys(category).includes('개발')) {
+                        return '개발'
+                    }
+                    if (Object.keys(category).includes('하이')) {
+                        return '하이'
+                    }
+                    return category
+                    }).join(', ')}
+                </div>
+                <div css={css`
+                    font-size: 14px;
+                    color: rgba(25, 30, 36, 0.54);
+                `}>
+                    {subCategory.map((category: any, index: number) => {
+                    if (Object.keys(category).includes('개발')) {
+                        return '개발 : ' + category['개발'].map((catobj : string) => catobj).join(', ')
+                    }
+                    if (Object.keys(category).includes('하이')) {
+                        return '하이 : ' + category['하이'].map((catobj : string) => catobj).join(', ')
+                    }
+                    })}
+                </div>
+            </div>
+            <div css={css`width: 100px;`}>{recruiting}</div>
+            <div css={css`width: 100px;`}>{period}</div>
+            <div css={css`width: 200px; padding: 0px 30px;`}>{activityDay}</div>
+            <div css={css`width: 160px; padding: 0px 10px;`}>{membershipFee}</div>
+            <div css={css`width: 200px;`}>{selectionProcess}</div>
+            <div css={css`flex-grow: 2;`}>{online}</div>
         </div>
     )
 }
