@@ -19,7 +19,12 @@ const MainFilter = () => {
             align-items: center;
             align-self: flex-start;
             gap: 16px;
+<<<<<<< HEAD
             margin-top: 250px;
+=======
+            margin-left: 300px;
+            margin-top: 53px;
+>>>>>>> 2dff46d8e943ab790ad2a919cad7028efc7f95f9
         `}>
             <span css={css`
                 font-size: 22px;

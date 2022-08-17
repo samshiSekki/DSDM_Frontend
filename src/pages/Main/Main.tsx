@@ -5,6 +5,7 @@ import React from 'react';
 import MainFilter from '../../components/Main/MainFilter';
 import MainLists from '../../components/Main/MainLists';
 import MainRecommend from '../../components/Main/MainRecommend';
+import MainTodayList from '../../components/Main/MainTodayList';
 
 const Main = () => {
     return(
@@ -16,6 +17,8 @@ const Main = () => {
             align-self: center;
             justify-content: center;
         `}>
+            {/* <MainRecommend/> */}
+            <MainTodayList/>
             <div css={css`
                 width: 1700px;
                 display: flex;
