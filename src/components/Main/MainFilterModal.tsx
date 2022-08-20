@@ -10,6 +10,8 @@ type FilterType = Record<string, string[]>
 interface MainFilterModalProps {
     modalVisible: boolean
     setModalVisible: (modalVisible: boolean) => void
+    filters: string[]
+    setFilters: any
 }
 
 const FilterDataset : FilterType = {
@@ -46,15 +48,14 @@ const FilterSelected = styled.div`
     }
 `
 
-const MainFilterModal = ({modalVisible, setModalVisible} : MainFilterModalProps) => {
-    const [filters, setFilters] = useState<string[]>([]);
+const MainFilterModal = ({modalVisible, setModalVisible, filters, setFilters} : MainFilterModalProps) => {
 
     const onClickFilter = (filterObj: string) => {
         if (filters.includes(filterObj)) {
-            setFilters(filters => filters.filter((element) => element !== filterObj))
+            setFilters((filters: string[]) => filters.filter((element: string) => element !== filterObj))
             return;
         }
-        setFilters(filters => {return [...filters,filterObj]});
+        setFilters((filters: string[]) => {return [...filters,filterObj]});
     }
 
     return (
@@ -91,6 +92,34 @@ const MainFilterModal = ({modalVisible, setModalVisible} : MainFilterModalProps)
                     </>
                 )
             })}
+            <div css={css`
+                display: flex;
+                justify-content: center;
+
+                margin-left: -20px;
+            `}>
+                <button css={css`
+                    font-size: 24px;
+                    line-height: 24px;
+
+                    text-align: center;
+                    display: flex;
+
+                    width: 260px;
+                    height: 80px;
+                    border-radius: 10px;
+                    padding: 8px 8px;
+                    align-items: center;
+                    justify-content: center;
+
+                    cursor: pointer;
+
+                    border: 1px solid #14B390;
+                    color: #14B390;
+                    background-color: #FFFFFF;
+                `}
+                onClick={() => setModalVisible(false)}>필터 적용하기</button>
+            </div>
         </div>
         </Modal>
     )

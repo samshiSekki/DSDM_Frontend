@@ -74,7 +74,7 @@ function MainLists() {
 
     return(
         <div css={css`
-            width: 1700px;
+            width: inherit;
             height: inherit;
             background: #F8F8F8;
             border-radius: 30px;
@@ -98,7 +98,7 @@ function MainLists() {
                             </p>
                             <div css={css`
                                 border-bottom: 1.5px solid #241E19;
-                                width: 1900px;
+                                width: 109%;
                                 height: 0px;
                             `}/>
                         </div>
@@ -110,7 +110,7 @@ function MainLists() {
             )}
              <div css={css`
                 border-bottom: 1.5px solid #241E19;
-                width: 1900px;
+                width: 119%;
                 height: 0px;
                 margin-left: -100px;
                 `}/>

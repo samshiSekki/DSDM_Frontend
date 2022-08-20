@@ -29,8 +29,10 @@ function MainList (club: ClubDatasetsType) {
         <div css={css`
             display: flex;
             align-items: center;
+            width: 109%;
 
-            height: 105px;
+            height: inherit;
+            padding: 40px 0px;
 
             font-size: 20px;
             line-height: 23px;
@@ -46,10 +48,10 @@ function MainList (club: ClubDatasetsType) {
                 font-weight: 700;
                 font-size: 24px;
                 line-height: 27px;
-                width: 400px;
+                width: 19%;
             `}>{name}
             </div>
-            <div css={css`width: 300px; padding: 0px 30px;`}>
+            <div css={css`width: 27%; padding: 0px 30px;`}>
                 <div>
                     {subCategory.map((category: any, index: number) => {
                     if (Object.keys(category).includes('개발')) {
@@ -75,12 +77,12 @@ function MainList (club: ClubDatasetsType) {
                     })}
                 </div>
             </div>
-            <div css={css`width: 100px;`}>{recruiting}</div>
-            <div css={css`width: 100px;`}>{period}</div>
-            <div css={css`width: 200px; padding: 0px 30px;`}>{activityDay}</div>
-            <div css={css`width: 160px; padding: 0px 10px;`}>{membershipFee}</div>
-            <div css={css`width: 200px;`}>{selectionProcess}</div>
-            <div css={css`flex-grow: 2;`}>{online}</div>
+            <div css={css`width: 8%;`}>{recruiting}</div>
+            <div css={css`width: 7%;`}>{period}</div>
+            <div css={css`width: 12%; padding: 0px 30px;`}>{activityDay}</div>
+            <div css={css`width: 10%; padding: 0px 10px;`}>{membershipFee}</div>
+            <div css={css`width: 15%;`}>{selectionProcess}</div>
+            <div css={css`width: 10%;`}>{online}</div>
         </div>
     )
 }

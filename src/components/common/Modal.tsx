@@ -61,7 +61,7 @@ const ContentContainer = css`
     background-color: #ffffff;
     top: 30px;
     position: relative;
-    height: 600px;
+    height: 700px;
     padding-top: 26px;
     padding-bottom: 40px;
     padding-left: 40px;
