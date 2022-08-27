@@ -29,7 +29,7 @@ function MainList (club: ClubDatasetsType) {
         <div css={css`
             display: flex;
             align-items: center;
-            width: 109%;
+            width: 100%;
 
             height: inherit;
             padding: 40px 0px;

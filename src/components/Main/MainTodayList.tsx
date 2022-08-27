@@ -56,7 +56,6 @@ const MainTodayList = () =>{
 }
 
 const listContainer = css`
-    margin-top: 226px;
     width: 100vw;
     height: 164px;
     display: flex;
