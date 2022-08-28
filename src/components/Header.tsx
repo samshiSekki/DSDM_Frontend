@@ -7,13 +7,13 @@ import { jsx, css } from '@emotion/react'
 const headerStyle = css`
     width: 912px;
     height: 80px;
-    padding-top: 95px;
+    padding-top: 66px;
 `
 const headContainer = css`
     background-color: white;
     width: 100vw;
-    height: 247px;
-    position: fixed;
+    height: 226px;
+    //position: fixed;
     z-index: 1000;
     text-align: center;
 `;
