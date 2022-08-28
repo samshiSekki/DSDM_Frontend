@@ -20,7 +20,6 @@ const Main = () => {
             {/* <MainRecommend/> */}
             <MainTodayList/>
             <div css={css`
-                width: 1700px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
