@@ -8,14 +8,13 @@ import { useNavigate } from "react-router-dom";
 const headerStyle = css`
     width: 912px;
     height: 80px;
-    padding-top: 95px;
-    
+    padding-top: 66px;
     cursor: pointer;
 `
 const headContainer = css`
     //background-color: white;
     width: 100vw;
-    height: 247px;
+    height: 226px;
     z-index: 1000;
     text-align: center;
 `;

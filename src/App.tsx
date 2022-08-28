@@ -6,6 +6,7 @@ import Main from './pages/Main/Main';
 import './App.css';
 import { css } from '@emotion/react';
 import Detail from './pages/Detail/Detail';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/detail/:id" element={<Detail/>} />
       </Routes>
+      <Footer/>
     </div>
 
   );

@@ -5,10 +5,21 @@ import { css } from '@emotion/react';
 import axios from 'axios';
 import snsIcon from '../../assets/detail/sns_icon.png'
 import siteIcon from '../../assets/detail/site_icon.png'
+import DetailSuggestModal from '../../components/Detail/DetailSuggestModal';
+import Toast from '../../components/common/Toast';
 
 const Detail = () => {
-
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [toastVisible, setToastVisible] = useState<boolean>(false);
   let {id} = useParams();
+
+  useEffect(() => {
+    if (toastVisible) {
+      setTimeout(() => {
+        setToastVisible(false);
+      }, 1000);
+    }
+  }, [toastVisible]);
 
   const [clubInfo, setClubInfo] = useState(
     {
@@ -68,7 +79,13 @@ const Detail = () => {
 
   return (
     <div css={css`overflow: hidden;`}>
-      <div css={css`padding-top: 247px; font-family: NanumSquare;`}>
+      {toastVisible && (
+            <>
+                <Toast msg="소중한 의견 감사합니다!"/>
+            </>
+        )}
+      {modalVisible && <DetailSuggestModal modalVisible={modalVisible} setModalVisible={setModalVisible} clubID={clubInfo.club.clubId} toastVisible={toastVisible} setToastVisible={setToastVisible}/>}
+      <div css={css`font-family: NanumSquare;`}>
         <div css={summaryContainer}>
           <div css={title}>
             <div css={imageDiv}>
@@ -118,6 +135,25 @@ const Detail = () => {
                 </tr>
               </tbody>
           </table>
+          <div css={css`width: 24vw; margin-top: 42px; display: flex; justify-content: space-between;`}>
+            <div css={css`
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 20px;
+            
+            color: #241E19;
+            `}>
+              * 수정 변경 요청 or 추가 제안 등을 원한다면?
+            </div>
+            <div css={css`
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration-line: underline;
+            color: #14B390;
+            `} onClick={()=>setModalVisible(true)}>
+              제안하기
+            </div>
+          </div>
         </div>
         <div css={detailContainer}>
           <div css={detailContent}>
@@ -171,7 +207,7 @@ const Detail = () => {
               {
                 clubInfo.club.reviews.map((a) => {
                   return(
-                    <div css={css`marginottom: 10px`}>
+                    <div css={css`margin-bottom: 10px; word-break:break-all;`}>
                       <a href={a} css={css`color: #241E19;`}>{a}</a>
                     </div>
                   )
@@ -204,22 +240,23 @@ const Detail = () => {
           </div>
         </div>
       </div>
+      
     </div>
   )
 }
 
 
 const summaryContainer = css`
-  position: fixed;
+  position: absolute;
   width: 40vw;
-  height: 100vh;
+  //height: 10vh;
+  margin-left: 12.5vw;
 `;
 
 const title = css`
   height: 61px;
   width: auto;
   display: flex;
-  margin-left: 12.5vw;
 `;
 
 const imageDiv = css`
@@ -259,7 +296,6 @@ const summaryTable = css`
     padding-bottom: 20px;
   }
 
-  margin-left: 12.5vw;
 `;
 
 const categoryTD = css`
