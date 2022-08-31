@@ -9,6 +9,7 @@ const MainTodayList = () =>{
     var todayList = {todayClub: [{clubId: -1, name: ""},{clubId: -1, name: ""}]}
     const [currentClub, setCurrentClub] = useState("");
 
+    
     const fetchData = async() => {
         try{
           const response = await axios.get(`${process.env.REACT_APP_BASE_URL}clubs/today`)
@@ -40,11 +41,12 @@ const MainTodayList = () =>{
 
     
     
+    
 
   return (
     <div css={listContainer}>
         <div css={childContainer}>
-            <img src={todayBorder} css={css`width: 704.8px; height: auto; position: absolute;`}/>
+            <img src={todayBorder} css={css`width: 564px; height: auto; position: absolute;`}/>
             <div css={clubNameContainer}>
                 <span css={clubName}>
                     {currentClub}
@@ -57,20 +59,20 @@ const MainTodayList = () =>{
 
 const listContainer = css`
     width: 100vw;
-    height: 164px;
+    height: 131.2px;
     display: flex;
     justify-content: center;
 `;
 const childContainer = css`
-    width: 704.8px;
-    height: 164px;
+    width: 564px;
+    height: 131.2px;
     //background-color: yellow;
 `;
 const clubNameContainer = css`
-    width: 704.8px;
+    width: 564px;
     text-align: center;
     position: absolute;
-    margin-top: 110px;
+    margin-top: 88px;
 
 `;
 const nameAnimation = keyframes`
@@ -100,14 +102,14 @@ const nameAnimation2 = keyframes`
 const clubName = css`
     font-style: normal;
     font-weight: 800;
-    font-size: 45px;
+    font-size: 36px;
     position: relative;
     color: #14B390;
 
     &:after {
         content: "";
         width: 100%;
-        height: 13px;
+        height: 10.4px;
         background: rgba(20, 179, 144, 0.2);
         position: absolute;
         display: inline-block;

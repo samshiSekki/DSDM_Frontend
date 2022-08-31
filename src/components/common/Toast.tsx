@@ -20,7 +20,7 @@ const toast = css`
     line-height: 63px;
     text-align: center;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 19.2px;
     color: #FFFFFF;
     z-index: 10000;
 `;
