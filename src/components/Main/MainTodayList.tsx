@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import { css, keyframes } from '@emotion/react';
 import todayBorder from '../../assets/main/today-border.png'
 import axios from 'axios';
+import {MobileView, BrowserView} from "react-device-detect";
 
 const MainTodayList = () =>{
 
@@ -38,22 +39,36 @@ const MainTodayList = () =>{
           clearInterval()
         
     }, [])
-
-    
-    
     
 
   return (
-    <div css={listContainer}>
-        <div css={childContainer}>
-            <img src={todayBorder} css={css`width: 564px; height: auto; position: absolute;`}/>
-            <div css={clubNameContainer}>
-                <span css={clubName}>
-                    {currentClub}
-                </span>
+    <>
+    <BrowserView>
+        <div css={listContainer}>
+            <div css={childContainer}>
+                <img src={todayBorder} css={css`width: 564px; height: auto; position: absolute;`}/>
+                <div css={clubNameContainer}>
+                    <span css={clubName}>
+                        {currentClub}
+                    </span>
+                </div>
             </div>
         </div>
-    </div>
+    </BrowserView>
+
+    <MobileView>
+        <div css={mobileListContainer}>
+            <div css={mobileChildContainer}>
+                <img src={todayBorder} css={css`width: 287px; height: auto; position: absolute;`}/>
+                <div css={mobileClubNameContainer}>
+                    <span css={mobileClubName}>
+                        {currentClub}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </MobileView>
+    </>
   )
 }
 
@@ -63,11 +78,27 @@ const listContainer = css`
     display: flex;
     justify-content: center;
 `;
+
+const mobileListContainer = css`
+    margin-top: 45px;
+    margin-bottom: 39px;
+    width: 100vw;
+    height: 74px;
+    display: flex;
+    justify-content: center;
+`;
+
 const childContainer = css`
     width: 564px;
     height: 131.2px;
     //background-color: yellow;
 `;
+
+const mobileChildContainer = css`
+    width: 287px;
+    height: 74px;
+`;
+
 const clubNameContainer = css`
     width: 564px;
     text-align: center;
@@ -75,6 +106,14 @@ const clubNameContainer = css`
     margin-top: 88px;
 
 `;
+const mobileClubNameContainer = css`
+    width: 287px;
+    text-align: center;
+    position: absolute;
+    margin-top: 47px;
+
+`;
+
 const nameAnimation = keyframes`
     from{
         opacity: 0;
@@ -115,6 +154,31 @@ const clubName = css`
         display: inline-block;
         left: 0;
         bottom: -3px;
+        z-index: 1;
+      };
+
+      animation: ${nameAnimation} 4s;
+      //animation: ${nameAnimation2} 5s;
+      animation-iteration-count: infinite;
+`;
+
+const mobileClubName = css`
+    font-family: NanumSquare;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    position: relative;
+    color: #14B390;
+
+    &:after {
+        content: "";
+        width: 100%;
+        height: 5px;
+        background: rgba(20, 179, 144, 0.2);
+        position: absolute;
+        display: inline-block;
+        left: 0;
+        bottom: 0px;
         z-index: 1;
       };
 
