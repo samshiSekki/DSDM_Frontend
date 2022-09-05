@@ -7,6 +7,7 @@ import snsIcon from '../../assets/detail/sns_icon.png'
 import siteIcon from '../../assets/detail/site_icon.png'
 import DetailSuggestModal from '../../components/Detail/DetailSuggestModal';
 import Toast from '../../components/common/Toast';
+import {MobileView, isBrowser, isIPad13} from "react-device-detect";
 
 const Detail = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -78,6 +79,8 @@ const Detail = () => {
   if (!clubInfo) return null;
 
   return (
+    <div>
+    {(isIPad13 || isBrowser)?
     <div css={css`overflow: hidden;`}>
       {toastVisible && (
             <>
@@ -240,7 +243,22 @@ const Detail = () => {
           </div>
         </div>
       </div>
-      
+      {(!isIPad13)&&(!isBrowser)?
+        (<MobileView>
+          <div css={css`padding-left: 20px; padding-right: 20px;`}>
+            <div css={mobileTitle}>
+              <div css={mobileImageDiv}>
+                <img src={clubInfo.club.logoUrl} css={css`width: 40px; height: 40px; borderRadius: 70%;`}/>
+              </div>
+            </div>
+          </div>
+        </MobileView>
+        )
+        :null
+      }
+    </div>
+    :null  
+  }
     </div>
   )
 }
@@ -259,11 +277,28 @@ const title = css`
   display: flex;
 `;
 
+const mobileTitle = css`
+  width: 100vw;
+  display: flex;
+  height: 40px;
+`;
+
 const imageDiv = css`
   width: 48.8px;
   height: 48.8px;
   border-radius: 70%;
   border: 1.5px solid #DBDBDB;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const mobileImageDiv = css`
+  width: 40px;
+  height: 40px;
+  border-radius: 70%;
+  border: 1px solid #DBDBDB;
   overflow: hidden;
   display: flex;
   align-items: center;
