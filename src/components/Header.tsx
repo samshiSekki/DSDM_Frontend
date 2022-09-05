@@ -24,15 +24,15 @@ const mobileHeadContainer = css`
 `;
 
 const headerStyle = css`
-    width: 912px;
-    height: 80px;
-    padding-top: 66px;
+    width: 730px;
+    height: auto;
+    padding-top: 53px;
     cursor: pointer;
 `
 const headContainer = css`
     //background-color: white;
     width: 100vw;
-    height: 226px;
+    height: 181px;
     z-index: 1000;
     text-align: center;
 `;

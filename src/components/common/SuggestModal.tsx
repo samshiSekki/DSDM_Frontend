@@ -20,7 +20,7 @@ const SuggestModal = ({children, setModalVisible, clubID} : ModalProps) => {
                 <div css={title}>제안하기</div>
                 <div css={Content}>
                     <div css={Header}>
-                        <img onClick={() => setModalVisible(false)} src={deleteIcon} css={css`cursor: pointer; position: absolute; top: 46px; right: 41px;`}/>
+                        <img onClick={() => setModalVisible(false)} src={deleteIcon} css={css`cursor: pointer; position: absolute; top: 36.8px; right: 32.8px; width: 12px; height: 12px;`}/>
                     </div>
                     <div>
                         {children}
@@ -62,14 +62,14 @@ interface ContainerType {
 
 const title = css`
     font-weight: 700;
-    font-size: 26px;
+    font-size: 20.8px;
     color: white;
     position: relative;
 `;
 
 const ContentContainer = css`
-    width: 580px;
-    height: 437px;
+    width: 464px;
+    height: 349.6px;
 `;
 
 
@@ -80,13 +80,13 @@ const Header = css`
 `;
 
 const Content = css`
-    width: 580px;
+    width: 464px;
     background-color: #ffffff;
-    top: 30px;
+    top: 24px;
     position: relative;
-    height: 370px;
-    padding-top: 26px;
-    padding-bottom: 40px;
-    padding-left: 40px;
-    border-radius: 20px;
+    height: 296px;
+    padding-top: 20.8px;
+    padding-bottom: 32px;
+    padding-left: 32px;
+    border-radius: 12.8px;
 `;
