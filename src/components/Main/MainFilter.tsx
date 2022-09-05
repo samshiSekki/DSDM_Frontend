@@ -54,8 +54,9 @@ const MainFilter = () => {
                 align-items: center;
                 align-self: flex-start;
                 gap: 16px;
-                margin-left: 130px;
+                margin-left: 180px;
                 margin-top: 53px;
+                margin-bottom: 50px;
             `}>
                 <span css={css`
                     font-size: 22px;

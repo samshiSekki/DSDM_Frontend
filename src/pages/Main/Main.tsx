@@ -10,7 +10,6 @@ import MainTodayList from '../../components/Main/MainTodayList';
 const Main = () => {
     return(
         <div css={css`
-            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { jsx, css } from '@emotion/react';
 import MainList from './MainList';
 import axios from 'axios';
+import { BrowserView, MobileView } from 'react-device-detect'
 
 type ClubType = Record<string, any>
 
@@ -73,14 +74,18 @@ function MainLists() {
     },[]);
 
     return(
+        <>
+        <BrowserView>
         <div css={css`
-            width: 110%;
+            width: 60%;
+            left: 50%;
+            transform: translateX(-50%);
             height: inherit;
             background: #F8F8F8;
             border-radius: 30px;
             position: relative;
 
-            padding: 0px 130px;
+            padding: 0px 110px;
 
             margin-top: 24px;
         `}>
@@ -98,7 +103,7 @@ function MainLists() {
                             </p>
                             <div css={css`
                                 border-bottom: 1.5px solid #241E19;
-                                width: 103%;
+                                width: 110%;
                                 height: 0px;
                             `}/>
                         </div>
@@ -110,11 +115,25 @@ function MainLists() {
             )}
              <div css={css`
                 border-bottom: 1.5px solid #241E19;
-                width: 107%;
+                width: 123%;
                 height: 0px;
                 margin-left: -100px;
                 `}/>
         </div>
+        </BrowserView>
+        <MobileView>
+            <div css={css`
+                width: 360px;
+                height: 200px;
+                background: #F8F8F8;
+                border-radius: 8px;
+            `}>
+                
+
+            </div>
+
+        </MobileView>
+        </>
     )
 
 }
