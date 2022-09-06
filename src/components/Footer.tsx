@@ -85,7 +85,7 @@ function Footer() {
     </BrowserView>
 
     <MobileView>
-    {toastVisible && (
+      {toastVisible && (
             <>
                 <Toast msg="소중한 의견 감사합니다!"/>
             </>
