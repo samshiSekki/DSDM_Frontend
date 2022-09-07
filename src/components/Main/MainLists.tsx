@@ -123,13 +123,30 @@ function MainLists() {
         </BrowserView>
         <MobileView>
             <div css={css`
-                width: 360px;
-                height: 200px;
+                width: 335px;
                 background: #F8F8F8;
                 border-radius: 8px;
+                padding: 23px 24px;
             `}>
-                
-
+                {Object.keys(clubs).map((key: string, index: number) => {
+                return (
+                    <>
+                        <div css={css`
+                        margin-bottom: 27px;
+                        `}>
+                            <p css={css`
+                                font-size: 10px;
+                                line-height: 11px;
+                            `}>{key}
+                            </p>
+                        
+                        {clubs[key].map((club: ClubDatasetsType, index: number) => {
+                            return <MainList key={index} {...club}/>
+                        })}
+                        </div>
+                    </>
+                )}
+            )}
             </div>
 
         </MobileView>
