@@ -2,8 +2,10 @@
 import { css } from "@emotion/react"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { ReactComponent as RecruitingIcon } from '../../assets/main/icon-recruiting.svg';
 
 import { BrowserView, MobileView } from 'react-device-detect'
+import styled from "@emotion/styled";
 
 type ClubDatasetsType = {
     name: string
@@ -16,6 +18,12 @@ type ClubDatasetsType = {
     online: string
     subCategory: any 
 }
+
+const NotRecruitingIcon = styled(RecruitingIcon)`
+   path {
+     fill: rgba(25, 30, 36, 0.54);
+   }
+`
 
 function MainList (club: ClubDatasetsType) {
     const { name, subCategory, recruiting, period, activityDay, membershipFee, selectionProcess, online } = club;
@@ -33,12 +41,9 @@ function MainList (club: ClubDatasetsType) {
         <div css={css`
             display: flex;
             align-items: center;
-            width: 100%;
-
             height: inherit;
-            padding: 40px 0px;
+            padding: 30px 0px;
 
-            font-size: 20px;
             line-height: 23px;
             color: #241E19;
 
@@ -50,9 +55,9 @@ function MainList (club: ClubDatasetsType) {
         >
             <div css={css`
                 font-weight: 700;
-                font-size: 24px;
+                font-size: 17px;
                 line-height: 27px;
-                width: 19%;
+                width: 20%;
             `}>{name}
             </div>
             <div css={css`width: 27%; padding: 0px 30px;`}>
@@ -68,7 +73,7 @@ function MainList (club: ClubDatasetsType) {
                     }).join(', ')}
                 </div>
                 <div css={css`
-                    font-size: 14px;
+                    font-size: 12px;
                     color: rgba(25, 30, 36, 0.54);
                 `}>
                     {subCategory.map((category: any, index: number) => {
@@ -81,21 +86,19 @@ function MainList (club: ClubDatasetsType) {
                     })}
                 </div>
             </div>
-            <div css={css`width: 8%;`}>{recruiting}</div>
-            <div css={css`width: 7%;`}>{period}</div>
-            <div css={css`width: 12%; padding: 0px 30px;`}>{activityDay}</div>
-            <div css={css`width: 10%; padding: 0px 10px;`}>{membershipFee}</div>
+            <div css={css`width: 7%;`}>{recruiting}</div>
+            <div css={css`width: 7%; white-space: pre-line; word-break: keep-all;`}>{period}</div>
+            <div css={css`width: 14%; padding: 0px 10px; white-space: pre-line; word-break: keep-all;`}>{activityDay}</div>
+            <div css={css`width: 10%; padding: 0px 10px; white-space: pre-line; word-break: keep-all;`}>{membershipFee}</div>
             <div css={css`width: 15%;`}>{selectionProcess}</div>
             <div css={css`width: 10%;`}>{online}</div>
         </div>
         </BrowserView>
         <MobileView>
             <div css={css`
-                width: 287px;
+                width: 253px;
                 background-color: #FFFFFF;
-                padding-top: 17px;
-                padding: 19px;
-                padding-bottom: 16px;
+                padding: 18px 15px 16px 19px;
                 margin-bottom: 7px;
             `}>
                 {recruiting === '마감' ?
@@ -104,7 +107,7 @@ function MainList (club: ClubDatasetsType) {
                 line-height: 9px;
                 color: rgba(25, 30, 36, 0.54);
             `}>
-                {recruiting}
+                 <NotRecruitingIcon/> 모집 {recruiting}
             </div>
             : 
             <div css={css`
@@ -112,7 +115,7 @@ function MainList (club: ClubDatasetsType) {
             line-height: 9px;
             color: #14B390;
         `}>
-            {recruiting}
+            <RecruitingIcon/> {recruiting}
         </div>
             }
                 <p css={css`
@@ -120,6 +123,8 @@ function MainList (club: ClubDatasetsType) {
                 font-size: 12px;
                 line-height: 14px;
                 /* identical to box height */
+                margin: 0;
+                margin: 8px 0px 7px 0px;
 
 
                 color: #241E19;`
@@ -134,8 +139,8 @@ function MainList (club: ClubDatasetsType) {
                         color: #7176FA;
                         padding: 2px 3px;
 
-                        font-size: 8px;
-                        line-height: 9px;
+                        font-size: 10px;
+                        line-height: 10px;
 
                         width: fit-content;
                         `}>
@@ -149,8 +154,8 @@ function MainList (club: ClubDatasetsType) {
                         color: #DB6AA7;
                         padding: 2px 3px;
 
-                        font-size: 8px;
-                        line-height: 9px;
+                        font-size: 10px;
+                        line-height: 10px;
 
                         width: fit-content;
                         `}>
@@ -164,8 +169,8 @@ function MainList (club: ClubDatasetsType) {
                         color: #F0A414;
                         padding: 2px 3px;
 
-                        font-size: 8px;
-                        line-height: 9px;
+                        font-size: 10px;
+                        line-height: 10px;
 
                         width: fit-content;
                         `}>

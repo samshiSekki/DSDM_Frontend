@@ -70,8 +70,11 @@ const MainFilter = () => {
             <BrowserView>
             <div css={css`
             display: flex;
-            width: 100%;
+            width: 1000px;
             justify-content: space-between;
+            
+            margin-top: 53px;
+            margin-bottom: 10px;
         `}>
             <div css={css`
                 display: flex;
@@ -79,12 +82,9 @@ const MainFilter = () => {
                 align-items: center;
                 align-self: flex-start;
                 gap: 16px;
-                margin-left: 180px;
-                margin-top: 53px;
-                margin-bottom: 50px;
             `}>
                 <span css={css`
-                    font-size: 22px;
+                    font-size: 20px;
                     line-height: 25px;
                 `}>{FILTER_TEXT}
                 </span>
@@ -142,13 +142,13 @@ const MainFilter = () => {
             `}>
                 <span css={css`
                     font-size: 10px;
-                    line-height: 11px;
+                    line-height: 10px;
                 `}>{FILTER_TEXT}
                 </span>
                 <div css={css`
                     font-weight: 700;
-                    font-size: 6px;
-                    line-height: 7px;
+                    font-size: 10px;
+                    line-height: 10px;
 
                     text-align: center;
 
@@ -156,8 +156,8 @@ const MainFilter = () => {
                     
                     border: 1px solid #14B390;
                     width: fit-content;
-                    border-radius: 10px;
-                    padding: 3px 5px;
+                    border-radius: 5px;
+                    padding: 3px 4px;
                     cursor: pointer;
                 `}
                     onClick={() => setModalVisible(true)}>

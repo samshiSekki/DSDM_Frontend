@@ -36,7 +36,7 @@ const Modal = ({children, setModalVisible} : ModalProps) => {
             <div css={BackgroundBox} onClick={() => setModalVisible(false)}/>
             <div css={MobileContentContainer}>
                 <div css={Header}>
-                    <img onClick={() => setModalVisible(false)} src={deleteIcon} css={css`width: 8px; height: 8px; cursor: pointer; position: absolute; top: 20px; right: 20px;`}/>
+                    <img onClick={() => setModalVisible(false)} src={deleteIcon} css={css`width: 8px; height: 8px; cursor: pointer; position: absolute; top: 20px; right: 20px; z-index: 99;`}/>
                 </div>
                 <div>
                     {children}
