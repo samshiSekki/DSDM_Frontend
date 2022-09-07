@@ -4,6 +4,7 @@ import { css } from "@emotion/react"
 import Modal from "../common/Modal"
 import styled from "@emotion/styled";
 import { useState } from "react";
+import { BrowserView, MobileView } from 'react-device-detect'
 
 type FilterType = Record<string, string[]>
 
@@ -48,6 +49,32 @@ const FilterSelected = styled.div`
     }
 `
 
+const MobileFilterSelected = styled.div`
+    font-size: 8px;
+    line-height: 8px;
+
+    text-align: center;
+    display: flex;
+
+    width: fit-content;
+    border-radius: 20px;
+    padding: 4px 4px;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    &.selected{
+        border: 1px solid #14B390;
+        color: #14B390;
+    }
+
+    &.notSelected{                              
+        border: 1px solid #DDDDDD;
+        color: #241E19;
+    }
+`
+
 const MainFilterModal = ({modalVisible, setModalVisible, filters, setFilters} : MainFilterModalProps) => {
 
     const onClickFilter = (filterObj: string) => {
@@ -60,6 +87,7 @@ const MainFilterModal = ({modalVisible, setModalVisible, filters, setFilters} : 
 
     return (
         <Modal modalVisible={modalVisible} setModalVisible={setModalVisible}>
+            <BrowserView>
         <div>
             {Object.keys(FilterDataset).map((key: string, index: number) => {
                 return (
@@ -121,6 +149,75 @@ const MainFilterModal = ({modalVisible, setModalVisible, filters, setFilters} : 
                 onClick={() => setModalVisible(false)}>필터 적용하기</button>
             </div>
         </div>
+        
+        </BrowserView>
+        <MobileView>
+        <div css={css`position: relative;`}>
+            {Object.keys(FilterDataset).map((key: string, index: number) => {
+                return (
+                    <>
+                        <p css={css`
+                            
+                            margin: 0;
+                            margin-bottom: 10px;
+                            
+                            font-weight: 700;
+                            font-size: 10px;
+                            line-height: 11px;
+
+                            color: #241E19;
+                        `}>{key}
+                        </p>
+                        <div css={css`
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 6px;
+
+                            margin-bottom: 20px;
+                        `}>
+                            {FilterDataset[key].map((filterObj: string, index: number) => {
+                                return (
+                                    <MobileFilterSelected className={filters.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj)}>
+                                        {filterObj}
+                                    </MobileFilterSelected>
+                                )
+                            })}
+                        </div>
+                    </>
+                )
+            })}
+            <div css={css`
+                position: absolute;
+                top: 281px;
+                left: 195px;
+
+            `}>
+                <button css={css`
+                    font-size: 10px;
+                    line-height: 10px;
+
+                    text-align: center;
+                    display: flex;
+
+                    width: fit-content;
+                    border-radius: 10px;
+                    padding: 4px 6px;
+                    align-items: center;
+                    justify-content: center;
+
+                    cursor: pointer;
+
+                    background: #14B390;
+                    border-radius: 5px;
+                    color: #FFFFFF;
+                    border: none;
+                `}
+                onClick={() => setModalVisible(false)}>{'> 적용하기'}</button>
+            </div>
+        </div>
+
+        </MobileView>
         </Modal>
     )
 }

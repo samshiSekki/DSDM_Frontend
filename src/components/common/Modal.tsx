@@ -4,6 +4,9 @@ import { css } from '@emotion/react';
 import React from 'react';
 import deleteIcon from '../../assets/common/img-delete.png';
 
+import { BrowserView, MobileView } from 'react-device-detect'
+
+
 interface ModalProps {
     modalVisible: boolean
     setModalVisible: (modalVisible: boolean) => void
@@ -14,6 +17,8 @@ interface ModalProps {
 
 const Modal = ({children, setModalVisible} : ModalProps) => {
     return (
+        <>
+        <BrowserView>
         <div css={ModalContainer}>
             <div css={BackgroundBox} onClick={() => setModalVisible(false)}/>
             <div css={ContentContainer}>
@@ -25,6 +30,21 @@ const Modal = ({children, setModalVisible} : ModalProps) => {
                 </div>
             </div>
         </div>
+        </BrowserView>
+        <MobileView>
+            <div css={ModalContainer}>
+            <div css={BackgroundBox} onClick={() => setModalVisible(false)}/>
+            <div css={MobileContentContainer}>
+                <div css={Header}>
+                    <img onClick={() => setModalVisible(false)} src={deleteIcon} css={css`width: 8px; height: 8px; cursor: pointer; position: absolute; top: 20px; right: 20px;`}/>
+                </div>
+                <div>
+                    {children}
+                </div>
+            </div>
+        </div>
+        </MobileView>
+        </>
     )
 }
 
@@ -68,6 +88,16 @@ const ContentContainer = css`
     border-radius: 20px;
 `;
 
+const MobileContentContainer = css`
+    width: 290px;
+    background-color: #ffffff;
+    top: 30px;
+    position: relative;
+    height: fit-content;
+    padding-top: 20px;
+    padding-left: 17px;
+    border-radius: 15px;
+`;
 
 const Header = css`
     display: flex;
