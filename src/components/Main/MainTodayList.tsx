@@ -10,7 +10,6 @@ const MainTodayList = () =>{
     var todayList = {todayClub: [{clubId: -1, name: ""},{clubId: -1, name: ""}]}
     const [currentClub, setCurrentClub] = useState("");
 
-    
     const fetchData = async() => {
         try{
           const response = await axios.get(`${process.env.REACT_APP_BASE_URL}clubs/today`)
