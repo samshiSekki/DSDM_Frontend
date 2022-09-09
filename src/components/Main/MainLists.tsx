@@ -54,7 +54,8 @@ type ClubDatasetsType = {
 //     }
 // ]
 
-function MainLists() {
+function MainLists({clubs} : any) {
+    /*
     const [clubs, setClubs] = useState<ClubType>({});
 
     const getClubLists = async () => {
@@ -71,7 +72,8 @@ function MainLists() {
     useEffect(() => {
         getClubLists();
 
-    },[]);
+    },[]);*/
+    console.log(clubs);
 
     return(
         <>

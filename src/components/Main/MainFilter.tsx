@@ -2,13 +2,23 @@
 
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MainFilterModal from './MainFilterModal';
 import deleteIcon from '../../assets/main/img-delete-tag.svg';
 import { BrowserView, MobileView } from 'react-device-detect'
+import axios from 'axios';
 
 const FILTER_TEXT = '이런 것만 보고싶어요!'
 const Filter_INSIDE_TEXT = 'filter'
+
+type FilterType = string[]
+
+const FieldFilterDataset : FilterType = ['IT', '광고', '기획', '경제/경영', '광고/마케팅', '건축', '어학', '기타', '발표', '문화/경영', '경영'];
+const RecruitingFilterDataset : FilterType = ['모집중', '마감'];
+const PeriodFilterDataset : FilterType = ['3개월 이하', '4-6개월', '7개월-1년', '1년 이상'];
+const ActivityDayDataset : FilterType = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'];
+const OnlineDataset : FilterType = ['온라인', '오프라인', '온/오프라인'];
+
 
 const FilterSelected = styled.div`
     font-size: 16px;
@@ -56,17 +66,56 @@ const MobileFilterSelected = styled.div`
 
 `
 
-const MainFilter = () => {
+const MainFilter = ({ clubs, setClubs } : any) => {
     const [modalVisible, setModalVisible] = useState<boolean>(false);
     const [filters, setFilters] = useState<string[]>([]);
 
-    const onClickDeleteFilter = (filterObj: string) => {
+    const [fieldFilter, setFieldFilter] = useState<string[]>([]);
+    const [recruitingFilter, setRecruitingFilter] = useState<string[]>([]);
+    const [periodFilter, setPeriodFilter] = useState<string[]>([]);
+    const [activityDayFilter, setActivityDayFilter] = useState<string[]>([]);
+    const [onlineFilter, setOnlineFilter] = useState<string[]>([]);
+
+    const onClickDeleteFilter = (filterObj: string, setFilters: any) => {
         setFilters((filters: string[]) => filters.filter((element: string) => element !== filterObj));
     }
     
+    const getClubLists = async () => {
+        // async await 함수를 사용할 때, 
+
+        if (fieldFilter.length === 0 && recruitingFilter.length === 0 && onlineFilter.length === 0 && periodFilter.length === 0 && activityDayFilter.length === 0) {
+            try {
+                const data = await axios.get(`http://43.200.156.125:5000/clubs`);
+                setClubs(data.data);
+                return;
+            } catch {
+                // 오류 발생시 실행
+            }
+        }
+        console.log(onlineFilter.map((i: string, index: number) => {return OnlineDataset.indexOf(i)+1}));
+
+        try {
+            const data = await axios.get(`http://43.200.156.125:5000/clubs?category=${fieldFilter}&recruiting=${recruitingFilter.map((i:string) => {if (i === '모집중') return true; else return false;})}&online=${onlineFilter.map((i: string, index: number) => {return OnlineDataset.indexOf(i)+1}) || ''}&period=${periodFilter.map((i: string, index: number) => {return PeriodFilterDataset.indexOf(i)+1}) || ''}&activityDay=${activityDayFilter.map((i: string) => {return i.slice(0,1)}) || ''}`);
+            setClubs(data.data);
+        } catch {
+            // 오류 발생시 실행
+        }
+    }
+
+    useEffect(() => {
+        getClubLists();
+
+    },[fieldFilter, recruitingFilter, periodFilter, activityDayFilter, onlineFilter]);
+    
     return (
         <>
-        {modalVisible && <MainFilterModal modalVisible={modalVisible} setModalVisible={setModalVisible} filters={filters} setFilters={setFilters}/>}
+        {modalVisible && <MainFilterModal fieldFilter={fieldFilter} setFieldFilter={setFieldFilter} recruitingFilter={recruitingFilter} setRecruitingFilter={setRecruitingFilter}
+        periodFilter={periodFilter} setPeriodFilter={setPeriodFilter}
+        activityDayFilter={activityDayFilter}
+        setActivityDayFilter={setActivityDayFilter}
+        onlineFilter={onlineFilter}
+        setOnlineFilter={setOnlineFilter}
+        modalVisible={modalVisible} setModalVisible={setModalVisible} filters={filters} setFilters={setFilters} setClubs={setClubs} getClubLists={getClubLists}/>}
             <BrowserView>
             <div css={css`
             display: flex;
@@ -114,9 +163,41 @@ const MainFilter = () => {
                 gap: 12px;
                 margin-top: auto;
             `}>
-                {filters.map((filter: string, index: number) => {
+                {fieldFilter.map((filter: string, index: number) => {
                     return (
-                        <FilterSelected  onClick={() => onClickDeleteFilter(filter)}>
+                        <FilterSelected  onClick={() => onClickDeleteFilter(filter, setFieldFilter)}>
+                            {filter}
+                            <img src={deleteIcon}/>
+                        </FilterSelected>
+                    )
+                })}
+                {recruitingFilter.map((filter: string, index: number) => {
+                    return (
+                        <FilterSelected  onClick={() => onClickDeleteFilter(filter, setRecruitingFilter)}>
+                            {filter}
+                            <img src={deleteIcon}/>
+                        </FilterSelected>
+                    )
+                })}
+                {periodFilter.map((filter: string, index: number) => {
+                    return (
+                        <FilterSelected  onClick={() => onClickDeleteFilter(filter, setPeriodFilter)}>
+                            {filter}
+                            <img src={deleteIcon}/>
+                        </FilterSelected>
+                    )
+                })}
+                {activityDayFilter.map((filter: string, index: number) => {
+                    return (
+                        <FilterSelected  onClick={() => onClickDeleteFilter(filter, setActivityDayFilter)}>
+                            {filter}
+                            <img src={deleteIcon}/>
+                        </FilterSelected>
+                    )
+                })}
+                {onlineFilter.map((filter: string, index: number) => {
+                    return (
+                        <FilterSelected  onClick={() => onClickDeleteFilter(filter, setOnlineFilter)}>
                             {filter}
                             <img src={deleteIcon}/>
                         </FilterSelected>
@@ -172,9 +253,41 @@ const MainFilter = () => {
                 margin-top: auto;
                 justify-content: flex-end;  
             `}>
-                {filters.map((filter: string, index: number) => {
+                {fieldFilter.map((filter: string, index: number) => {
                     return (
-                        <MobileFilterSelected  onClick={() => onClickDeleteFilter(filter)}>
+                        <MobileFilterSelected  onClick={() => onClickDeleteFilter(filter, setFieldFilter)}>
+                            {filter}
+                            <img css={css`width: 4px; height: 4px;`} src={deleteIcon}/>
+                        </MobileFilterSelected>
+                    )
+                })}
+                {recruitingFilter.map((filter: string, index: number) => {
+                    return (
+                        <MobileFilterSelected  onClick={() => onClickDeleteFilter(filter, setRecruitingFilter)}>
+                            {filter}
+                            <img css={css`width: 4px; height: 4px;`} src={deleteIcon}/>
+                        </MobileFilterSelected>
+                    )
+                })}
+                {periodFilter.map((filter: string, index: number) => {
+                    return (
+                        <MobileFilterSelected  onClick={() => onClickDeleteFilter(filter, setPeriodFilter)}>
+                            {filter}
+                            <img css={css`width: 4px; height: 4px;`} src={deleteIcon}/>
+                        </MobileFilterSelected>
+                    )
+                })}
+                {activityDayFilter.map((filter: string, index: number) => {
+                    return (
+                        <MobileFilterSelected  onClick={() => onClickDeleteFilter(filter, setActivityDayFilter)}>
+                            {filter}
+                            <img css={css`width: 4px; height: 4px;`} src={deleteIcon}/>
+                        </MobileFilterSelected>
+                    )
+                })}
+                {onlineFilter.map((filter: string, index: number) => {
+                    return (
+                        <MobileFilterSelected  onClick={() => onClickDeleteFilter(filter, setOnlineFilter)}>
                             {filter}
                             <img css={css`width: 4px; height: 4px;`} src={deleteIcon}/>
                         </MobileFilterSelected>

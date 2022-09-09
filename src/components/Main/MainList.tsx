@@ -177,6 +177,186 @@ function MainList (club: ClubDatasetsType) {
                             {category}
                             </div>
                     }
+                    ///
+                    if (category === '클라우드 컴퓨팅') {
+                        return <div css={css`
+                        background: #ffd1d1;
+                        border-radius: 2px;
+                        color: #f07714;
+                        padding: 2px 3px;
+
+                        font-size: 10px;
+                        line-height: 10px;
+
+                        width: fit-content;
+                        `}>
+                            {category}
+                            </div>
+                    }
+                    if (category === '게임개발') {
+                        return <div css={css`
+                        background: #d1ffd4;
+                        border-radius: 2px;
+                        color: #14f05d;
+                        padding: 2px 3px;
+
+                        font-size: 10px;
+                        line-height: 10px;
+
+                        width: fit-content;
+                        `}>
+                            {category}
+                            </div>
+                    }
+                    if (category === '인공지능') {
+                        return <div css={css`
+                        background: #ffd1fc;
+                        border-radius: 2px;
+                        color: #f014aa;
+                        padding: 2px 3px;
+
+                        font-size: 10px;
+                        line-height: 10px;
+
+                        width: fit-content;
+                        `}>
+                            {category}
+                            </div>
+                    }
+                    if (category === '광고') {
+                        return <div css={css`
+                        background: #d1e3ff;
+                        border-radius: 2px;
+                        color: #143cf0;
+                        padding: 2px 3px;
+
+                        font-size: 10px;
+                        line-height: 10px;
+
+                        width: fit-content;
+                        `}>
+                            {category}
+                            </div>
+                    }
+                    if (category === '발표') {
+                        return <div css={css`
+                        background: #d1f7ff;
+                        border-radius: 2px;
+                        color: #14cbf0;
+                        padding: 2px 3px;
+
+                        font-size: 10px;
+                        line-height: 10px;
+
+                        width: fit-content;
+                        `}>
+                            {category}
+                            </div>
+                    }
+                    if (category === '빅데이터') {
+                        return <div css={css`
+                        background: #f5ffd1;
+                        border-radius: 2px;
+                        color: #9fa612;
+                        padding: 2px 3px;
+
+                        font-size: 10px;
+                        line-height: 10px;
+
+                        width: fit-content;
+                        `}>
+                            {category}
+                            </div>
+                    }
+                    if (category === '경제') {
+                        return <div css={css`
+                        background: #d1ffe5;
+                        border-radius: 2px;
+                        color: #12a64b;
+                        padding: 2px 3px;
+
+                        font-size: 10px;
+                        line-height: 10px;
+
+                        width: fit-content;
+                        `}>
+                            {category}
+                            </div>
+                    }
+                    if (category === '경영') {
+                        return <div css={css`
+                        background: #fffad1;
+                        border-radius: 2px;
+                        color: #a67f12;
+                        padding: 2px 3px;
+
+                        font-size: 10px;
+                        line-height: 10px;
+
+                        width: fit-content;
+                        `}>
+                            {category}
+                            </div>
+                    }
+                    if (category === '마케팅') {
+                        return <div css={css`
+                        background: #ffd1eb;
+                        border-radius: 2px;
+                        color: #a6126b;
+                        padding: 2px 3px;
+
+                        font-size: 10px;
+                        line-height: 10px;
+
+                        width: fit-content;
+                        `}>
+                            {category}
+                            </div>
+                    }
+                    if (category === '문화') {
+                        return <div css={css`
+                        background: #d1fff9;
+                        border-radius: 2px;
+                        color: #12a686;
+                        padding: 2px 3px;
+
+                        font-size: 10px;
+                        line-height: 10px;
+
+                        width: fit-content;
+                        `}>
+                            {category}
+                            </div>
+                    }
+                    if (category === '공연') {
+                        return <div css={css`
+                        background: #ffd1fc;
+                        border-radius: 2px;
+                        color: #7f12a6;
+                        padding: 2px 3px;
+
+                        font-size: 10px;
+                        line-height: 10px;
+
+                        width: fit-content;
+                        `}>
+                            {category}
+                            </div>
+                    }
+
+                    return <div css={css`
+                        background: #cfcfcf;
+                        border-radius: 2px;
+                        color: #000000;
+                        padding: 2px 3px;
+
+                        font-size: 10px;
+                        line-height: 10px;
+
+                        width: fit-content;
+                        `}>
+                            {category}
+                            </div>
                     })}
                 </div>
                 <div css={css`

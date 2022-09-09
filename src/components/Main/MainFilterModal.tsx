@@ -3,25 +3,26 @@
 import { css } from "@emotion/react"
 import Modal from "../common/Modal"
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserView, MobileView } from 'react-device-detect'
+import axios from "axios";
 
-type FilterType = Record<string, string[]>
+type FilterType = string[]
 
 interface MainFilterModalProps {
     modalVisible: boolean
     setModalVisible: (modalVisible: boolean) => void
     filters: string[]
     setFilters: any
+    setClubs: any
 }
 
-const FilterDataset : FilterType = {
-    '분야' : ['IT', '광고/마케팅', '경제/경영'],
-    '모집 여부' : ['모집중', '모집완료'],
-    '활동 기간' : ['3개월 이하', '4-6개월', '7개월-1년', '1년 이상'],
-    '활동 요일' : ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-    '온/오프라인' : ['온라인', '오프라인']
-}
+const FieldFilterDataset : FilterType = ['IT', '광고', '기획', '경제/경영', '광고/마케팅', '건축', '어학', '기타', '발표', '문화/경영', '경영'];
+const RecruitingFilterDataset : FilterType = ['모집중', '마감'];
+const PeriodFilterDataset : FilterType = ['3개월 이하', '4-6개월', '7개월-1년', '1년 이상'];
+const ActivityDayDataset : FilterType = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'];
+const OnlineDataset : FilterType = ['온라인', '오프라인', '온/오프라인'];
+
 
 const FilterSelected = styled.div`
     font-size: 16px;
@@ -75,9 +76,9 @@ const MobileFilterSelected = styled.div`
     }
 `
 
-const MainFilterModal = ({modalVisible, setModalVisible, filters, setFilters} : MainFilterModalProps) => {
+const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFilter, recruitingFilter, setRecruitingFilter, periodFilter, setPeriodFilter, activityDayFilter, setActivityDayFilter, onlineFilter, setOnlineFilter, setClubs, getClubLists} : any) => {
 
-    const onClickFilter = (filterObj: string) => {
+    const onClickFilter = (filterObj: string, filters: string[], setFilters: any) => {
         if (filters.includes(filterObj)) {
             setFilters((filters: string[]) => filters.filter((element: string) => element !== filterObj))
             return;
@@ -85,12 +86,15 @@ const MainFilterModal = ({modalVisible, setModalVisible, filters, setFilters} : 
         setFilters((filters: string[]) => {return [...filters,filterObj]});
     }
 
+    useEffect(() => {
+        getClubLists();
+
+    },[fieldFilter, recruitingFilter, periodFilter, activityDayFilter, onlineFilter]);
+
     return (
         <Modal modalVisible={modalVisible} setModalVisible={setModalVisible}>
             <BrowserView>
         <div>
-            {Object.keys(FilterDataset).map((key: string, index: number) => {
-                return (
                     <>
                         <p css={css`
                             margin-bottom: 20px;
@@ -100,26 +104,137 @@ const MainFilterModal = ({modalVisible, setModalVisible, filters, setFilters} : 
                             line-height: 20px;
 
                             color: #241E19;
-                        `}>{key}
+                        `}>{'분야'}
                         </p>
                         <div css={css`
                             display: flex;
+                            flex-wrap: wrap;
                             align-items: center;
                             gap: 13px;
 
                             margin-bottom: 50px;
                         `}>
-                            {FilterDataset[key].map((filterObj: string, index: number) => {
+                            {FieldFilterDataset.map((filterObj: string, index: number) => {
                                 return (
-                                    <FilterSelected className={filters.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj)}>
+                                    <FilterSelected className={fieldFilter.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj, fieldFilter, setFieldFilter)}>
                                         {filterObj}
                                     </FilterSelected>
                                 )
                             })}
                         </div>
                     </>
-                )
-            })}
+                    <>
+                        <p css={css`
+                            margin-bottom: 20px;
+                            
+                            font-weight: 700;
+                            font-size: 18px;
+                            line-height: 20px;
+
+                            color: #241E19;
+                        `}>{'모집 여부'}
+                        </p>
+                        <div css={css`
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 13px;
+
+                            margin-bottom: 50px;
+                        `}>
+                            {RecruitingFilterDataset.map((filterObj: string, index: number) => {
+                                return (
+                                    <FilterSelected className={recruitingFilter.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj, recruitingFilter, setRecruitingFilter)}>
+                                        {filterObj}
+                                    </FilterSelected>
+                                )
+                            })}
+                        </div>
+                    </>
+                    <>
+                        <p css={css`
+                            margin-bottom: 20px;
+                            
+                            font-weight: 700;
+                            font-size: 18px;
+                            line-height: 20px;
+
+                            color: #241E19;
+                        `}>{'활동 기간'}
+                        </p>
+                        <div css={css`
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 13px;
+
+                            margin-bottom: 50px;
+                        `}>
+                            {PeriodFilterDataset.map((filterObj: string, index: number) => {
+                                return (
+                                    <FilterSelected className={periodFilter.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj, periodFilter, setPeriodFilter)}>
+                                        {filterObj}
+                                    </FilterSelected>
+                                )
+                            })}
+                        </div>
+                    </>
+                    <>
+                        <p css={css`
+                            margin-bottom: 20px;
+                            
+                            font-weight: 700;
+                            font-size: 18px;
+                            line-height: 20px;
+
+                            color: #241E19;
+                        `}>{'활동 요일'}
+                        </p>
+                        <div css={css`
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 13px;
+
+                            margin-bottom: 50px;
+                        `}>
+                            {ActivityDayDataset.map((filterObj: string, index: number) => {
+                                return (
+                                    <FilterSelected className={activityDayFilter.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj, activityDayFilter, setActivityDayFilter)}>
+                                        {filterObj}
+                                    </FilterSelected>
+                                )
+                            })}
+                        </div>
+                    </>
+                    <>
+                        <p css={css`
+                            margin-bottom: 20px;
+                            
+                            font-weight: 700;
+                            font-size: 18px;
+                            line-height: 20px;
+
+                            color: #241E19;
+                        `}>{'온/오프라인'}
+                        </p>
+                        <div css={css`
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 13px;
+
+                            margin-bottom: 50px;
+                        `}>
+                            {OnlineDataset.map((filterObj: string, index: number) => {
+                                return (
+                                    <FilterSelected className={onlineFilter.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj, onlineFilter, setOnlineFilter)}>
+                                        {filterObj}
+                                    </FilterSelected>
+                                )
+                            })}
+                        </div>
+                    </>
             <div css={css`
                 display: flex;
                 justify-content: center;
@@ -153,8 +268,66 @@ const MainFilterModal = ({modalVisible, setModalVisible, filters, setFilters} : 
         </BrowserView>
         <MobileView>
         <div css={css`position: relative;`}>
-            {Object.keys(FilterDataset).map((key: string, index: number) => {
-                return (
+        <>
+                        <p css={css`
+                            
+                            margin: 0;
+                            margin-bottom: 10px;
+                            
+                            font-weight: 700;
+                            font-size: 10px;
+                            line-height: 11px;
+
+                            color: #241E19;
+                        `}>{'분야'}
+                        </p>
+                        <div css={css`
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 6px;
+
+                            margin-bottom: 20px;
+                        `}>
+                            {FieldFilterDataset.map((filterObj: string, index: number) => {
+                                return (
+                                    <MobileFilterSelected className={fieldFilter.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj, fieldFilter, setFieldFilter)}>
+                                        {filterObj}
+                                    </MobileFilterSelected>
+                                )
+                            })}
+                        </div>
+                    </>
+                    <>
+                    <p css={css`
+                            
+                            margin: 0;
+                            margin-bottom: 10px;
+                            
+                            font-weight: 700;
+                            font-size: 10px;
+                            line-height: 11px;
+
+                            color: #241E19;
+                        `}>{'모집 여부'}
+                        </p>
+                        <div css={css`
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 6px;
+
+                            margin-bottom: 20px;
+                        `}>
+                            {RecruitingFilterDataset.map((filterObj: string, index: number) => {
+                                return (
+                                    <MobileFilterSelected className={recruitingFilter.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj, recruitingFilter, setRecruitingFilter)}>
+                                        {filterObj}
+                                    </MobileFilterSelected>
+                                )
+                            })}
+                        </div>
+                    </>
                     <>
                         <p css={css`
                             
@@ -166,7 +339,7 @@ const MainFilterModal = ({modalVisible, setModalVisible, filters, setFilters} : 
                             line-height: 11px;
 
                             color: #241E19;
-                        `}>{key}
+                        `}>{'활동 기간'}
                         </p>
                         <div css={css`
                             display: flex;
@@ -176,17 +349,75 @@ const MainFilterModal = ({modalVisible, setModalVisible, filters, setFilters} : 
 
                             margin-bottom: 20px;
                         `}>
-                            {FilterDataset[key].map((filterObj: string, index: number) => {
+                            {PeriodFilterDataset.map((filterObj: string, index: number) => {
                                 return (
-                                    <MobileFilterSelected className={filters.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj)}>
+                                    <MobileFilterSelected className={periodFilter.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj, periodFilter, setPeriodFilter)}>
                                         {filterObj}
                                     </MobileFilterSelected>
                                 )
                             })}
                         </div>
                     </>
-                )
-            })}
+                    <>
+                    <p css={css`
+                            
+                            margin: 0;
+                            margin-bottom: 10px;
+                            
+                            font-weight: 700;
+                            font-size: 10px;
+                            line-height: 11px;
+
+                            color: #241E19;
+                        `}>{'활동 요일'}
+                        </p>
+                        <div css={css`
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 6px;
+
+                            margin-bottom: 20px;
+                        `}>
+                            {ActivityDayDataset.map((filterObj: string, index: number) => {
+                                return (
+                                    <MobileFilterSelected className={activityDayFilter.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj, activityDayFilter, setActivityDayFilter)}>
+                                        {filterObj}
+                                    </MobileFilterSelected>
+                                )
+                            })}
+                        </div>
+                    </>
+                    <>
+                        <p css={css`
+                            
+                            margin: 0;
+                            margin-bottom: 10px;
+                            
+                            font-weight: 700;
+                            font-size: 10px;
+                            line-height: 11px;
+
+                            color: #241E19;
+                        `}>{'온/오프라인'}
+                        </p>
+                        <div css={css`
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 6px;
+
+                            margin-bottom: 20px;
+                        `}>
+                            {OnlineDataset.map((filterObj: string, index: number) => {
+                                return (
+                                    <MobileFilterSelected className={onlineFilter.includes(filterObj) ? "selected" : "notSelected"} onClick={() => onClickFilter(filterObj, onlineFilter, setOnlineFilter)}>
+                                        {filterObj}
+                                    </MobileFilterSelected>
+                                )
+                            })}
+                        </div>
+                    </>
             <div css={css`
                 position: absolute;
                 top: 281px;
