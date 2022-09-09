@@ -94,7 +94,7 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
     return (
         <Modal modalVisible={modalVisible} setModalVisible={setModalVisible}>
             <BrowserView>
-        <div>
+        <div css={css`position: relative;`}>
                     <>
                         <p css={css`
                             margin-bottom: 20px;
@@ -235,23 +235,19 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                             })}
                         </div>
                     </>
-            <div css={css`
-                display: flex;
-                justify-content: center;
-
-                margin-left: -20px;
-            `}>
                 <button css={css`
-                    font-size: 24px;
-                    line-height: 24px;
+                    font-size: 16px;
 
                     text-align: center;
                     display: flex;
+                    position: absolute;
+                    top: 583px;
+                    left: 415px;
 
-                    width: 260px;
-                    height: 80px;
-                    border-radius: 10px;
-                    padding: 8px 8px;
+                    width: inherit;
+                    height: inherit;
+                    border-radius: 8px;
+                    padding: 4px 8px;
                     align-items: center;
                     justify-content: center;
 
@@ -261,8 +257,7 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                     color: #14B390;
                     background-color: #FFFFFF;
                 `}
-                onClick={() => setModalVisible(false)}>필터 적용하기</button>
-            </div>
+                onClick={() => setModalVisible(false)}>{'> 적용하기'}</button>
         </div>
         
         </BrowserView>
