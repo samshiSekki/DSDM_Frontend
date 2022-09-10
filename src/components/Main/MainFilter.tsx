@@ -81,8 +81,15 @@ const MainFilter = ({ clubs, setClubs } : any) => {
     }
     
     const getClubLists = async () => {
+
         // async await 함수를 사용할 때, 
 
+
+        const url = `http://43.200.156.125:5000/clubs?` + (fieldFilter.length !==0 ? `category=${fieldFilter}` : '')
+        + (recruitingFilter.length !==0 ? `&recruiting=${recruitingFilter.map((i:string) => {if (i === '모집중') return true; else return false;})}` : '')
+        + (onlineFilter.length !==0 ? `&online=${onlineFilter.map((i: string, index: number) => {return OnlineDataset.indexOf(i)+1})}` : '')
+        + (periodFilter.length !==0 ? `&period=${periodFilter.map((i: string, index: number) => {return PeriodFilterDataset.indexOf(i)+1})}` : '')
+        + (activityDayFilter.length !==0 ? `&activityDay=${activityDayFilter.map((i: string) => {return i.slice(0,1)})}` : '');
         if (fieldFilter.length === 0 && recruitingFilter.length === 0 && onlineFilter.length === 0 && periodFilter.length === 0 && activityDayFilter.length === 0) {
             try {
                 const data = await axios.get(`http://43.200.156.125:5000/clubs`);
@@ -95,7 +102,7 @@ const MainFilter = ({ clubs, setClubs } : any) => {
         console.log(onlineFilter.map((i: string, index: number) => {return OnlineDataset.indexOf(i)+1}));
 
         try {
-            const data = await axios.get(`http://43.200.156.125:5000/clubs?category=${fieldFilter}&recruiting=${recruitingFilter.map((i:string) => {if (i === '모집중') return true; else return false;})}&online=${onlineFilter.map((i: string, index: number) => {return OnlineDataset.indexOf(i)+1}) || ''}&period=${periodFilter.map((i: string, index: number) => {return PeriodFilterDataset.indexOf(i)+1}) || ''}&activityDay=${activityDayFilter.map((i: string) => {return i.slice(0,1)}) || ''}`);
+            const data = await axios.get(url);
             setClubs(data.data);
         } catch {
             // 오류 발생시 실행
