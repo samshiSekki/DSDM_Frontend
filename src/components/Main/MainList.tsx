@@ -100,7 +100,7 @@ function MainList (club: ClubDatasetsType) {
                 background-color: #FFFFFF;
                 padding: 18px 15px 16px 19px;
                 margin-bottom: 7px;
-            `}>
+            `}  onClick={() => onClickSubListPage(club.clubId)}>
                 {recruiting === '마감' ?
                 <div css={css`
                 font-size: 8px;

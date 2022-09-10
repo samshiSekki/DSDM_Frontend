@@ -111,8 +111,9 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                             flex-wrap: wrap;
                             align-items: center;
                             gap: 13px;
+                            width: 500px;
 
-                            margin-bottom: 50px;
+                            margin-bottom: 30px;
                         `}>
                             {FieldFilterDataset.map((filterObj: string, index: number) => {
                                 return (
@@ -140,7 +141,7 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                             align-items: center;
                             gap: 13px;
 
-                            margin-bottom: 50px;
+                            margin-bottom: 30px;
                         `}>
                             {RecruitingFilterDataset.map((filterObj: string, index: number) => {
                                 return (
@@ -168,7 +169,7 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                             align-items: center;
                             gap: 13px;
 
-                            margin-bottom: 50px;
+                            margin-bottom: 30px;
                         `}>
                             {PeriodFilterDataset.map((filterObj: string, index: number) => {
                                 return (
@@ -196,7 +197,7 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                             align-items: center;
                             gap: 13px;
 
-                            margin-bottom: 50px;
+                            margin-bottom: 30px;
                         `}>
                             {ActivityDayDataset.map((filterObj: string, index: number) => {
                                 return (
@@ -224,7 +225,7 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                             align-items: center;
                             gap: 13px;
 
-                            margin-bottom: 50px;
+                            margin-bottom: 30px;
                         `}>
                             {OnlineDataset.map((filterObj: string, index: number) => {
                                 return (
@@ -241,8 +242,8 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                     text-align: center;
                     display: flex;
                     position: absolute;
-                    top: 583px;
-                    left: 415px;
+                    top: 503px;
+                    left: 445px;
 
                     width: inherit;
                     height: inherit;
@@ -257,7 +258,7 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                     color: #14B390;
                     background-color: #FFFFFF;
                 `}
-                onClick={() => setModalVisible(false)}>{'> 적용하기'}</button>
+                onClick={() => setModalVisible(false)}>{'> 완료'}</button>
         </div>
         
         </BrowserView>
@@ -439,7 +440,7 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                     color: #FFFFFF;
                     border: none;
                 `}
-                onClick={() => setModalVisible(false)}>{'> 적용하기'}</button>
+                onClick={() => setModalVisible(false)}>{'> 완료'}</button>
             </div>
         </div>
 

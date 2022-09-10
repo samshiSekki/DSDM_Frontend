@@ -23,7 +23,7 @@ const Modal = ({children, setModalVisible} : ModalProps) => {
             <div css={BackgroundBox} onClick={() => setModalVisible(false)}/>
             <div css={ContentContainer}>
                 <div css={Header}>
-                    <img onClick={() => setModalVisible(false)} src={deleteIcon} css={css`cursor: pointer; position: absolute; top: 46px; right: 41px;`}/>
+                    <img onClick={() => setModalVisible(false)} src={deleteIcon} css={css`cursor: pointer; position: absolute; top: 46px; right: 41px; z-index: 99;`}/>
                 </div>
                 <div>
                     {children}
@@ -77,7 +77,7 @@ interface ContainerType {
 }
 
 const ContentContainer = css`
-    width: 580px;
+    width: 540px;
     background-color: #ffffff;
     top: 30px;
     position: relative;
