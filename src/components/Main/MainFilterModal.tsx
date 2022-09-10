@@ -284,6 +284,8 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                             gap: 6px;
 
                             margin-bottom: 20px;
+
+                            width: 270px;
                         `}>
                             {FieldFilterDataset.map((filterObj: string, index: number) => {
                                 return (
@@ -416,20 +418,19 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                     </>
             <div css={css`
                 position: absolute;
-                top: 281px;
-                left: 195px;
+                top: 305px;
+                left: 211px;
 
             `}>
-                <button css={css`
-                    font-size: 10px;
-                    line-height: 10px;
+                <div css={css`
+                    font-size: 11px;
 
                     text-align: center;
                     display: flex;
 
                     width: fit-content;
                     border-radius: 10px;
-                    padding: 4px 6px;
+                    padding: 3px 6px;
                     align-items: center;
                     justify-content: center;
 
@@ -440,7 +441,7 @@ const MainFilterModal = ({modalVisible, setModalVisible, fieldFilter, setFieldFi
                     color: #FFFFFF;
                     border: none;
                 `}
-                onClick={() => setModalVisible(false)}>{'> 완료'}</button>
+                onClick={() => setModalVisible(false)}>{'> 완료'}</div>
             </div>
         </div>
 
