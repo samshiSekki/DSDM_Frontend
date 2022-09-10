@@ -165,11 +165,11 @@ const Detail = () => {
                       `}
                     >
                       {clubInfo.club.online == 1 ? (
-                        <div>온라인</div>
+                        <div>온라인 ({clubInfo.club.location})</div>
                       ) : clubInfo.club.online == 2 ? (
-                        <div>오프라인</div>
+                        <div>오프라인 ({clubInfo.club.location})</div>
                       ) : (
-                        <div>온/오프라인</div>
+                        <div>온/오프라인 ({clubInfo.club.location})</div>
                       )}
                     </td>
                   </tr>
@@ -432,11 +432,11 @@ const Detail = () => {
                   `}
                 >
                   {clubInfo.club.online == 1 ? (
-                    <div>온라인</div>
+                    <div>온라인 ({clubInfo.club.location})</div>
                   ) : clubInfo.club.online == 2 ? (
-                    <div>오프라인</div>
+                    <div>오프라인 ({clubInfo.club.location})</div>
                   ) : (
-                    <div>온/오프라인</div>
+                    <div>온/오프라인 ({clubInfo.club.location})</div>
                   )}
                 </td>
               </tr>

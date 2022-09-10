@@ -7,7 +7,7 @@ import { MobileView, BrowserView } from "react-device-detect";
 
 const MainTodayList = () => {
   var todayList = [{ clubId: -1, name: "" }];
-  const [currentClub, setCurrentClub] = useState("");
+  const [currentClub, setCurrentClub] = useState("없습니다...🙏");
 
   const fetchData = async () => {
     try {
@@ -52,7 +52,11 @@ const MainTodayList = () => {
               `}
             />
             <div css={clubNameContainer}>
-              <span css={clubName}>{currentClub}</span>
+              <span
+                css={currentClub == "없습니다...🙏" ? staticClubName : clubName}
+              >
+                {currentClub}
+              </span>
             </div>
           </div>
         </div>
@@ -70,7 +74,15 @@ const MainTodayList = () => {
               `}
             />
             <div css={mobileClubNameContainer}>
-              <span css={mobileClubName}>{currentClub}</span>
+              <span
+                css={
+                  currentClub == "없습니다...🙏"
+                    ? staticMobileClubName
+                    : mobileClubName
+                }
+              >
+                {currentClub}
+              </span>
             </div>
           </div>
         </div>
@@ -151,6 +163,26 @@ const clubName = css`
   animation-iteration-count: infinite;
 `;
 
+const staticClubName = css`
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  position: relative;
+  color: #14b390;
+
+  &:after {
+    content: "";
+    width: 100%;
+    height: 10.4px;
+    background: rgba(20, 179, 144, 0.2);
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    bottom: -3px;
+    z-index: 1;
+  }
+`;
+
 const mobileClubName = css`
   font-family: NanumSquare;
   font-style: normal;
@@ -173,6 +205,27 @@ const mobileClubName = css`
 
   animation: ${nameAnimation} 4s;
   animation-iteration-count: infinite;
+`;
+
+const staticMobileClubName = css`
+  font-family: NanumSquare;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  position: relative;
+  color: #14b390;
+
+  &:after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    background: rgba(20, 179, 144, 0.2);
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    bottom: 0px;
+    z-index: 1;
+  }
 `;
 
 export default MainTodayList;
